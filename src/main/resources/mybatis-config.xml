@@ -25,11 +25,4 @@
 		<typeAlias type="kh.com.finalProject.publicdata.SearchDTO" alias="SearchDTO"/>
 	</typeAliases>
 
-	<!-- <mappers>
-		<mapper resource="mappers/file-mapper.xml" />
-		<mapper resource="mappers/board-mapper.xml" />
-		<mapper resource="mappers/member-mapper.xml" />
-		<mapper resource="mappers/reply-mapper.xml" />
-	</mappers>  -->
-
 </configuration>

@@ -282,7 +282,7 @@ a {
 	<div class="margin"></div>
 
 	<script>
-		ws = new WebSocket("ws://52.79.227.141:8080/reply");
+		ws = new WebSocket("ws://192.168.219.102/reply");
 
 		ws.onopen = function() {
 			console.log("커넥션 오픈");

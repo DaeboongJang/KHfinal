@@ -16,8 +16,9 @@ public class FestivalDTO {
 	private String title;
 	private String tel;
 	private String content;
-	
-	public FestivalDTO() {}
+
+	public FestivalDTO() {
+	}
 
 	public FestivalDTO(String contentid, String addr1, String addr2, String firstimage, String firstimage2,
 			String eventenddate, String eventstartdate, String modifiedtime, int readcount, String title, String tel,
@@ -80,7 +81,7 @@ public class FestivalDTO {
 	public String getEventenddate() {
 		return eventenddate;
 	}
-	
+
 	public void setEventenddate(String eventenddate) {
 		this.eventenddate = eventenddate;
 	}
@@ -96,7 +97,7 @@ public class FestivalDTO {
 	public void setEventstartdate(String eventstartdate) {
 		this.eventstartdate = eventstartdate;
 	}
-	
+
 	public void setEventstartdate(Date eventstartdate) {
 		this.eventstartdate = getStart(eventstartdate);
 	}
@@ -104,7 +105,7 @@ public class FestivalDTO {
 	public String getModifiedtime() {
 		return modifiedtime;
 	}
-	
+
 	public void setModifiedtime(String modifiedtime) {
 		this.modifiedtime = modifiedtime;
 	}
@@ -157,15 +158,15 @@ public class FestivalDTO {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일 kk:mm:ss");
 		return sdf.format(modifiedtime);
 	}
-	
+
 	public String getStart(Date eventstartday) {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일");
 		return sdf.format(eventstartday);
 	}
-	
+
 	public String getEnd(Date eventendday) {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일");
 		return sdf.format(eventendday);
 	}
-	
+
 }

@@ -15,8 +15,9 @@ public class LeportsDTO {
 	private int readcount;
 	private String title;
 	private String content;
-	
-	public LeportsDTO() {}
+
+	public LeportsDTO() {
+	}
 
 	public LeportsDTO(String contentid, String addr1, String addr2, String firstimage, String firstimage2, String mapx,
 			String mapy, String modifiedtime, int readcount, String title, String content) {
@@ -97,7 +98,7 @@ public class LeportsDTO {
 	public void setModifiedtime(Date modifiedtime) {
 		this.modifiedtime = getModi(modifiedtime);
 	}
-	
+
 	public void setModifiedtime(String modifiedtime) {
 		this.modifiedtime = modifiedtime;
 	}
@@ -125,7 +126,7 @@ public class LeportsDTO {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "LeportsDTO [contentid=" + contentid + ", addr1=" + addr1 + ", addr2=" + addr2 + ", firstimage="
@@ -137,15 +138,15 @@ public class LeportsDTO {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일 kk:mm:ss");
 		return sdf.format(modifiedtime);
 	}
-	
+
 	public Date getDate(String modifiedtime) {
 		try {
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddkkmmss");
 			return sdf.parse(modifiedtime);
-		}catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return null;
 	}
-	
+
 }

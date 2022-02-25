@@ -95,11 +95,6 @@ public class HomeService {
 		if (endNavi == pageTotalCnt)
 			needNext = false;
 
-		System.out.println("startNavi : " + startNavi);
-		System.out.println("endNavi : " + endNavi);
-		System.out.println("needPrev : " + needPrev);
-		System.out.println("needNext : " + needNext);
-
 		HashMap<String, Object> map = new HashMap<>();
 		map.put("startNavi", startNavi);
 		map.put("endNavi", endNavi);

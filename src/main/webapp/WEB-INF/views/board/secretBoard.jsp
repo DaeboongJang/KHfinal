@@ -96,14 +96,6 @@
 			pwConfirm();
 		});
 
-		/* 엔터키 
-		function enterkey() {
-			if (window.event.keyCode == 13) {
-				pwConfirm();
-			}
-		}
-		*/
-
 		// 비밀번호 확인 함수
 		function pwConfirm() {
 			let data = $("#secretPassword").serialize(); // 댓글 form 안의 데이터 직렬화

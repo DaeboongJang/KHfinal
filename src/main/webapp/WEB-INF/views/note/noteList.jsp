@@ -562,9 +562,7 @@ ul {
             });
         }
 
-        //<td><input type="checkbox" name="seq_msg"
-		//	class="cls-checkBox" value="${message.seq_msg}"></td>
-        
+		// 삭제 버튼 클릭시        
         $(document).on("click", ".deleteBtn", function (e) {
             console.log("a");
             let note_seq = $(e.target).val();

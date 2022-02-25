@@ -30,9 +30,6 @@ public class AdminController {
 	@Autowired
 	private BoardService bService;
 
-//	@Autowired
-//	private ReportService rService;
-
 	@Autowired
 	private ReplyService replyService;
 
@@ -44,7 +41,7 @@ public class AdminController {
 
 	@Autowired
 	private ReportService rService;
-	
+
 	@Autowired
 	private AdminService service;
 
@@ -73,10 +70,10 @@ public class AdminController {
 
 		int recordTotalCnt = service.dayBoardCount();
 		System.out.println("recordTotalCnt : " + recordTotalCnt);
-		
+
 		int recordTotalCntM = service.countDayMember();
 		System.out.println("recordTotalCntM : " + recordTotalCntM);
-		
+
 		int recordTotalCntR = service.countReport();
 		System.out.println("recordTotalCntR : " + recordTotalCntR);
 
@@ -89,7 +86,7 @@ public class AdminController {
 		System.out.println("mlist : " + mlist);
 		System.out.println("blist : " + blist);
 		HashMap<String, Object> map = new HashMap<>();
-		
+
 		// 멤버 영역
 		map.put("mlist", mlist);
 
@@ -129,23 +126,6 @@ public class AdminController {
 		model.addAttribute("currentPage", currentPage);
 		return "/admin/member";
 	}
-
-	// 전체 게시판 조회
-//	@RequestMapping("/toManagerBoard.do")
-//	public String toBoard(Model model, int currentPage) throws Exception {
-//		// 자유게시판 게시글 총 갯수
-//		int recordTotalCnt = service.selectAllBoardCount();
-//
-//		// 자유게시판 페이지네이션
-//		HashMap<String, Object> naviMap = service.getPageNavi(recordTotalCnt, currentPage);
-//		List<BoardDTO> list = service.selectAll(currentPage);
-//
-//		model.addAttribute("naviMap", naviMap);
-//		model.addAttribute("list", list);
-//		model.addAttribute("recordTotalCnt", recordTotalCnt);
-//
-//		return "manager/main";
-//	}
 
 	// 개시판 관리 페이지 이동
 	@RequestMapping("/board.do")

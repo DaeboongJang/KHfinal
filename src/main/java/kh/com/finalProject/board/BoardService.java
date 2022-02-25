@@ -151,7 +151,7 @@ public class BoardService {
 	public int selectSeq() throws Exception {
 		return dao.selectSeq();
 	}
-	
+
 	// 게시글 신고
 	public int report(ReportDTO dto) throws Exception {
 		if (dao.report(dto) == 1) {
@@ -187,17 +187,15 @@ public class BoardService {
 			// 파일 삭제
 			dto.setBoard_seq(board_seq);
 			List<String> notMatch = fdao.notMatchSys_name(board_seq, sys_name);
-			
+
 			// DB에서 삭제
 			fdao.deleteFromSys_name(notMatch);
 			for (int i = 0; i < notMatch.size(); i++) {
 				File file = new File(realPath, notMatch.get(i));
 				file.delete();
 			}
-			
+
 		}
-
-
 		return 0;
 	}
 
@@ -210,18 +208,18 @@ public class BoardService {
 		}
 	}
 
-   // 조건으로 리스트 가져오기
-   public List<BoardDTO> selectCondition(String category, int currentPage) throws Exception {
-      int startRange = currentPage * recordCntPerPage - (recordCntPerPage - 1);
-      int endRange = currentPage * recordCntPerPage;
-      List<BoardDTO> list = dao.selectCondition(category, startRange, endRange);
-      return list;
-   }
+	// 조건으로 리스트 가져오기
+	public List<BoardDTO> selectCondition(String category, int currentPage) throws Exception {
+		int startRange = currentPage * recordCntPerPage - (recordCntPerPage - 1);
+		int endRange = currentPage * recordCntPerPage;
+		List<BoardDTO> list = dao.selectCondition(category, startRange, endRange);
+		return list;
+	}
 
-   // 조건 게시글 갯수
-   public int countCondition(String category) throws Exception {
-      return dao.countCondition(category);
-   }
+	// 조건 게시글 갯수
+	public int countCondition(String category) throws Exception {
+		return dao.countCondition(category);
+	}
 
 	// 당일 신규 게시글 조회
 	public List<BoardDTO> dayBoard(int currentPage) throws Exception {

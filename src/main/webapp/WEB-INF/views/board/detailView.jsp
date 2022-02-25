@@ -178,7 +178,7 @@ label {
 				<div class="col-11 d-flex justify-content-start">
 					<h3>
 						<input type="text" id="title" name="title" value="${dto.title}"
-							style="border: none;" readonly>
+							style="border: none;width:800px;" readonly>
 					</h3>
 				</div>
 				<c:if test="${ loginSession.id != dto.writer_id }">
@@ -733,8 +733,8 @@ label {
       let left = Math.ceil(( window.screen.width - width )/2);
       let top = Math.ceil(( window.screen.height - height )/2); 
       
-      let url = "${pageContext.request.contextPath}/member/note.do?writer_id=" + writer_id;
-      let name = "비밀글";
+      let url = "${pageContext.request.contextPath}/member/bnote.do?writer_id=" + writer_id;
+      let name = "쪽지 보내기";
       let option = "width=" + width + ", height=" + height
          + ", left=" + left + ", top=" + top;
       window.open(url, name, option);

@@ -43,30 +43,25 @@ public class FollowService {
 		// 0 or 1이 담겨져서 @Controller에 보냄.
 		return rs;
 	}
-	
+
 	// 로그인된 id 팔로워 조회
-		public List<FollowDTO> follower(String follower_id) throws Exception {
-			return dao.follower(follower_id);
-		}
-		
-		// 로그인된 id 팔로잉 조회
-			public List<FollowDTO> follow(String follow_id) throws Exception {
-				return dao.follow(follow_id);
-			}
+	public List<FollowDTO> follower(String follower_id) throws Exception {
+		return dao.follower(follower_id);
+	}
 
-			public int plusFollow(FollowDTO dto) throws Exception {
+	// 로그인된 id 팔로잉 조회
+	public List<FollowDTO> follow(String follow_id) throws Exception {
+		return dao.follow(follow_id);
+	}
 
-				int rs = dao.insertFollow(dto);
+	public int plusFollow(FollowDTO dto) throws Exception {
+		int rs = dao.insertFollow(dto);
+		return rs;
+	}
 
-				return rs;
-			}
-
-			
-			public int deleteFollow(FollowDTO dto) throws Exception {
-
-			int rs = dao.deleteFollow(dto);
-
-			return rs;
-		}
+	public int deleteFollow(FollowDTO dto) throws Exception {
+		int rs = dao.deleteFollow(dto);
+		return rs;
+	}
 
 }

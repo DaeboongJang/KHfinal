@@ -33,8 +33,6 @@ public class FileController {
       // 저장 경로 설정
       String realPath = session.getServletContext().getRealPath("/upload");
 
-      System.out.println("!!! FileController upload 도착 !!!");
-      System.out.println("!!! realPath : " + realPath + " !!!");
 
       // JsonObject형 jsonObject변수를 만들어 FileServiece에 넘는 작업
       JsonObject jsonObject = service.SummerNoteImageFile(realPath, file);

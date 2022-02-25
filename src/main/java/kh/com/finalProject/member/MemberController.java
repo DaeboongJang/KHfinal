@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-
 import kh.com.finalProject.follow.FollowDTO;
 import kh.com.finalProject.follow.FollowService;
 import kh.com.finalProject.utils.TemporaryPW;
@@ -46,7 +45,7 @@ public class MemberController {
 
 	@Autowired
 	private BCryptPasswordEncoder pwEncoder;
-	
+
 	public MemberController() {
 		System.out.println("MemberController 인스턴스 생성");
 	}
@@ -92,23 +91,12 @@ public class MemberController {
 
 		return "member/findID";
 	}
-	
-	// 비밀번호 찾기 (팝업창 띄움)
-	   /*
-	    * => 이부분 혹시 몰라서 주석처리했습니다
-	    * 
-	    * @RequestMapping("/tofindPW.do") public String findPW(MemberDTO dto, String
-	    * rawPW, String encodePW) throws Exception { if (pwEncoder.matches(rawPW,
-	    * encodePW)) { if (dto.getUserType() == 2) {
-	    * session.setAttribute("loginSession", dto); return "admin"; } if
-	    * (dto.getUserType() == 2) { return "admin"; } } return "member/findPW"; }
-	    */
 
-	   @RequestMapping("/tofindPW.do")
-	   public String findPW() {
+	@RequestMapping("/tofindPW.do")
+	public String findPW() {
 
-	      return "member/findPW";
-	   }
+		return "member/findPW";
+	}
 
 	// -------------------- Login페이지 영역 --------------------
 	// 로그인
@@ -136,11 +124,11 @@ public class MemberController {
 
 					return "admin";
 				}
-				
+
 				// 전체 방문자 수 +1
 				vService.visitInsert();
 				return "성공";
-				
+
 			} else {
 
 				return "실패";
@@ -294,7 +282,7 @@ public class MemberController {
 
 		// 이메일 보내기
 		String strSetFrom = "jp1005guest@gmail.com"; // root-context.xml에 주입한 자신의 이메일 계정 (보내는 사람의 구글 계정) => 계정관리 -> 보안
-													// -> 보안 수준이 낮은 앱의 액세스 '사용'으로 바꿔야함
+														// -> 보안 수준이 낮은 앱의 액세스 '사용'으로 바꿔야함
 		String strToMail = email; // 수신받을 이메일
 		String strTitle = "Email verification for membership registration"; // 자신이 보낼 이메일 제목
 		String strContent = "Code : " + iCheckNum; // 자신이 보낼 이메일 내용
@@ -403,53 +391,51 @@ public class MemberController {
 	}
 
 	// 회원정보 수정
-	   @RequestMapping(value = "/toModify.do")
-	   public String toModify(MultipartFile file, MemberDTO dto) throws Exception {
-	      System.out.println("toModify");
-	      // 수정된 회원정보 update
+	@RequestMapping(value = "/toModify.do")
+	public String toModify(MultipartFile file, MemberDTO dto) throws Exception {
+		System.out.println("toModify");
+		// 수정된 회원정보 update
 
-	      String realPath = session.getServletContext().getRealPath("upload");
-	      System.out.println(realPath);
-	      File realPathFile = new File(realPath);
-	      if (!realPathFile.exists()) {
-	         realPathFile.mkdir();
-	      }
+		String realPath = session.getServletContext().getRealPath("upload");
+		System.out.println(realPath);
+		File realPathFile = new File(realPath);
+		if (!realPathFile.exists()) {
+			realPathFile.mkdir();
+		}
 
-	      if (!file.isEmpty()) {
-	         dto.setOri_name(file.getOriginalFilename());
+		if (!file.isEmpty()) {
+			dto.setOri_name(file.getOriginalFilename());
 
-	         dto.setSys_name(UUID.randomUUID() + "_" + dto.getOri_name());
+			dto.setSys_name(UUID.randomUUID() + "_" + dto.getOri_name());
 
-	         file.transferTo(new File(realPath + File.separator + dto.getSys_name()));
-	      } else {
-	         dto.setOri_name("");
-	         dto.setSys_name("");
-	      }
-	      System.out.println("pw 값 : " + dto.getPw());
-	      System.out.println("주소 값 : " + dto.getAddress());
+			file.transferTo(new File(realPath + File.separator + dto.getSys_name()));
+		} else {
+			dto.setOri_name("");
+			dto.setSys_name("");
+		}
 
-	      if (dto.getPw().equals("")) {
-	         dto.setPw(service.originPW(dto.getId()));
-	      } else {
+		if (dto.getPw().equals("")) {
+			dto.setPw(service.originPW(dto.getId()));
+		} else {
 
-	         String rawPW = ""; // 인코딩 전 PW
-	         String encodePW = ""; // 인코딩 후 PW
+			String rawPW = ""; // 인코딩 전 PW
+			String encodePW = ""; // 인코딩 후 PW
 
-	         rawPW = dto.getPw(); // 비밀번호 얻어옴
-	         encodePW = pwEncoder.encode(rawPW); // 비밀번호 인코딩
-	         dto.setPw(encodePW); // 인코딩된 비밀버호를 dto객체에 다시 저장
-	      }
+			rawPW = dto.getPw(); // 비밀번호 얻어옴
+			encodePW = pwEncoder.encode(rawPW); // 비밀번호 인코딩
+			dto.setPw(encodePW); // 인코딩된 비밀버호를 dto객체에 다시 저장
+		}
 
-	      int rs = service.toModify(dto);
+		int rs = service.toModify(dto);
 
-	      if (rs != -1) {
-	         System.out.println("회원정보가 수정되었습니다.");
+		if (rs != -1) {
+			System.out.println("회원정보가 수정되었습니다.");
 
-	         session.invalidate();
-	      }
+			session.invalidate();
+		}
 
-	      return "home";
-	   }
+		return "home";
+	}
 
 	// 쪽지 보내기 팝업창 , 회원조회
 	@RequestMapping(value = "/note.do")
@@ -458,6 +444,16 @@ public class MemberController {
 		List<MemberDTO> list = service.selectAll();
 		model.addAttribute("list", list);
 		return "member/note";
+	}
+
+	// 게시글 쪽지 보내기 팝업창 , 회원조회
+	@RequestMapping(value = "/bnote.do")
+	public String bnote(String writer_id, Model model) throws Exception {
+		System.out.println("note 팝업 controller 도착");
+		List<MemberDTO> list = service.selectAll();
+		model.addAttribute("list", list);
+		model.addAttribute("writer_id", writer_id);
+		return "member/bnote";
 	}
 
 }

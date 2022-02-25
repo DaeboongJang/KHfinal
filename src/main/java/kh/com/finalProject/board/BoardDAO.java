@@ -20,9 +20,6 @@ public class BoardDAO {
 	@Autowired
 	private SqlSession session;
 
-	// private int recordCntPerPage = 10;
-	// private int naviCntPerPage = 10;
-
 	// 전체 게시판 조회
 	public List<BoardDTO> selectAll(int startRange, int endRange) throws Exception {
 		HashMap<String, Object> map = new HashMap<>();

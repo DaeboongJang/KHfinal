@@ -39,20 +39,6 @@ label {
                <button type="button" class="btn btn-primary w-100" id="btnNext">다음</button>
             </div>
          </div>
-
-         <!-- 
-         <div class="row mb-2" id="email" style="display: none;">
-            <label for="이메일" class="form-label">이메일</label>
-            <div class="col-8">
-               <input type="text" class="form-control" id="email" name="email"
-                  placeholder="가입 시 등록한 이메일을 입력해주세요" required="required">
-            </div>
-
-            <div class="col-4">
-               <button type="button" class="btn btn-warning w-100" id="btnConfirm">확인</button>
-            </div>
-         </div>
-         -->
          
          <div class="row mb-2 justify-content-center" style="display: none;" id="submit_area">
             <div class="col-6 d-flex justify-content-center">

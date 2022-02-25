@@ -8,8 +8,9 @@ public class SearchDTO {
 	private int readcount;
 	private String title;
 	private String content;
-	
-	public SearchDTO() {}
+
+	public SearchDTO() {
+	}
 
 	public SearchDTO(String contentid, String addr1, String firstimage2, String modifiedtime, int readcount,
 			String title, String content) {
